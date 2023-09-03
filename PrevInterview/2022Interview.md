@@ -6,18 +6,17 @@
 - 为节省版面，本试题的程序源码省去了`#include`指令。
 - 本试题中的程序源码仅用于考察C语言基础，不应当作为C语言「代码风格」的范例。
 - 题目难度随机排列。
- 所有题目编译并运行于`x86_64 GNU/Linux`环境。
+- 所有题目编译并运行于`x86_64 GNU/Linux`环境。
 
-> 学长寄语：  
+> 学长寄语：
 > 长期以来，西邮Linux兴趣小组的面试题以难度之高名扬西邮校内。我们作为出题人也清楚的知道这份试题略有难度。请别担心。**若有同学能完成一半的题目，就已经十分优秀。** 其次，相比于题目的答案，我们对你的思路和过程更感兴趣，或许你的答案略有瑕疵，但你正确的思路和对知识的理解足以为你赢得绝大多数的分数。最后，做题的过程也是学习和成长的过程，相信本试题对你更加熟悉的掌握C语言的一定有所帮助。祝你好运。我们FZ103见！
 
-Copyright © 2022 西邮Linux兴趣小组, All Rights Reserved.  
+Copyright © 2022 西邮Linux兴趣小组, All Rights Reserved.
 本试题使用采用 [知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](http://creativecommons.org/licenses/by-nc-sa/4.0/) 进行许可。
-
 
 ## 0. 我的计算器坏了？！
 
-`2^10=1024`对应于十进制的4位，那么`2^10000`对应于十进制的多少位呢?
+`2^10 = 1024`对应于十进制的4位，那么`2^10000`对应于十进制的多少位呢?
 
 ## 1. printf还能这么玩？
 
@@ -25,10 +24,10 @@ Copyright © 2022 西邮Linux兴趣小组, All Rights Reserved.
 
 ```c
 int main(void) {
-  if ((3 + 2 < 2) (3 + 2 2))
-    printf("Welcome to Xiyou Linux Group\n");
-  else
-    printf("%d\n", printf("Xiyou Linux Group - 2%d", printf("")));
+    if ((3 + 2 < 2) (3 + 2 2))
+        printf("Welcome to Xiyou Linux Group\n");
+    else
+        printf("%d\n", printf("Xiyou Linux Group - 2%d", printf("")));
 }
 ```
 
@@ -38,13 +37,12 @@ int main(void) {
 - 请谈谈对`sizeof()`及`strlen()`的理解吧。
 
 ```c
-int main(void)
-{
+int main(void) {
     char p0[] = "Hello,Linux";
     char *p1 = "Hello,Linux";
     char p2[11] = "Hello,Linux";
-    printf("p0==p1: %d, strcmp(p0,p2): %d\n", p0 == p1, strcmp(p0, p2));
-    printf("sizeof(p0): %zu, sizeof(p1): %zu, sizeof(*p2): %zu \n",
+    printf("p0 == p1: %d, strcmp(p0, p2): %d\n", p0 == p1, strcmp(p0, p2));
+    printf("sizeof(p0): %zu, sizeof(p1): %zu, sizeof(*p2): %zu\n",
            sizeof(p0), sizeof(p1), sizeof(*p2));
     printf("strlen(p0): %zu, strlen(p1): %zu\n", strlen(p0), strlen(p1));
 }
@@ -56,8 +54,7 @@ int main(void)
 
 ```c
 int a = 3;
-void test()
-{
+void test() {
     int a = 1;
     a += 1;
     {
@@ -66,8 +63,7 @@ void test()
     }
     printf("a = %d\n", a);
 }
-int main(void)
-{
+int main(void) {
     test();
     printf("a= %d\n", a);
 }
@@ -78,22 +74,19 @@ int main(void)
 `union`与`struct`各有什么特点呢，你了解他们的内存分配模式吗。
 
 ```c
-typedef union
-{
+typedef union {
     long l;
     int i[5];
     char c;
 } UNION;
-typedef struct
-{
+typedef struct {
     int like;
     UNION coin;
     double collect;
 } STRUCT;
-int main(void)
-{
-    printf("sizeof (UNION) = %zu \n", sizeof(UNION)); 
-    printf("sizeof (STRUCT) = %zu \n", sizeof(STRUCT));
+int main(void) {
+    printf("sizeof (UNION) = %zu\n", sizeof(UNION)); 
+    printf("sizeof (STRUCT) = %zu\n", sizeof(STRUCT));
 }
 ```
 
@@ -103,8 +96,7 @@ int main(void)
 - 请谈谈你对位运算的理解。
 
 ```c
-int main(void)
-{
+int main(void) {
     unsigned char a = 4 | 7;
     a <<= 3;
     unsigned char b = 5 & 7;
@@ -114,8 +106,8 @@ int main(void)
     unsigned short d = (a ^ c) << 3;
     signed char e = -63;
     e <<= 2;
-    printf("a: %d, b: %d, c: %d, d: %d \n", a, b, c, (char)d);
-    printf("e: %#x \n", e);
+    printf("a: %d, b: %d, c: %d, d: %d\n", a, b, c, (char)d);
+    printf("e: %#x\n", e);
 }
 ```
 
@@ -150,32 +142,32 @@ int main(void)
 ```c
 char* convertAndMerge(/*补全签名*/);
 int main(void) {
-  char words[2][20] = {"Welcome to Xiyou ", "Linux Group 2022"};
-  printf("%s\n", words[0]);
-  printf("%s\n", words[1]);
-  char *str = convertAndMerge(words);
-  printf("str = %s\n", str);
-  free(str);
+    char words[2][20] = {"Welcome to Xiyou ", "Linux Group 2022"};
+    printf("%s\n", words[0]);
+    printf("%s\n", words[1]);
+    char *str = convertAndMerge(words);
+    printf("str = %s\n", str);
+    free(str);
 }
 ```
 
 ## 10. 给你我的指针，访问我的心声
 
->　程序的输出有点奇怪，请尝试解释一下程序的输出吧。
+程序的输出有点奇怪，请尝试解释一下程序的输出吧。
 
 ```c
 int main(int argc, char **argv) {
-  int arr[5][5];
-  int a = 0;
-  for (int i = 0; i < 5; i++) {
-    int *temp = *(arr + i);
-    for (; temp < arr[5]; temp++) *temp = a++;
-  }
-  for (int i = 0; i < 5; i++) {
-    for (int j = 0; j < 5; j++) {
-      printf("%d\t", arr[i][j]);
+    int arr[5][5];
+    int a = 0;
+    for (int i = 0; i < 5; i++) {
+        int *temp = *(arr + i);
+        for (; temp < arr[5]; temp++) *temp = a++;
     }
-  }
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d\t", arr[i][j]);
+        }
+    }
 }
 ```
 
@@ -187,14 +179,11 @@ int main(int argc, char **argv) {
 
 ```c
 #include <stdio.h>
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     printf("argc = %d\n", argc);
-    while (1)
-    {
+    while (1) {
         argc++;
-        if (argc < 0)
-        {
+        if (argc < 0) {
             printf("%s\n", (char *)argv[0]);
             break;
         }
@@ -207,10 +196,8 @@ int main(int argc, char **argv)
 程序的输出有点奇怪，请尝试解释一下程序的输出吧。
 
 ```c
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     int data1[2][3] = {{0x636c6557, 0x20656d6f, 0x58206f74},
-                       //  u o y i     n i L            \0
                        {0x756f7969, 0x6e694c20, 0x00000000}};
     int data2[] = {0x47207875, 0x70756f72, 0x32303220, 0x00000a32};
     char *a = (char *)data1;
@@ -219,8 +206,6 @@ int main(int argc, char **argv)
     strcpy(buf, a);
     strcat(buf, b);
     printf("%s \n", buf);
-    if(*buf='W') printf("LE");
-    else printf("BE");
 }
 ```
 
@@ -230,23 +215,22 @@ int main(int argc, char **argv)
 - 请尝试着解释程序的输出。
 
 ```c
-#include <stdio.h>
 #define SWAP(a, b, t) t = a; a = b; b = t
 #define SQUARE(a) a *a
 #define SWAPWHEN(a, b, t, cond) if (cond) SWAP(a, b, t)
 int main() {
-  int tmp;
-  int x = 1;
-  int y = 2;
-  int z = 3;
-  int w = 3;
-  SWAP(x, y, tmp);
-  printf("x = %d, y = %d, tmp = %d\n", x, y, tmp);
-  if (x y) SWAP(x, y, tmp);
-  printf("x = %d, y = %d, tmp = %d\n", x, y, tmp);
-  SWAPWHEN(x, y, tmp, SQUARE(1 + 2 + z++ + ++w) == 100);
-  printf("x = %d, y = %d,tmp=%d\n", x, y, tmp);
-  printf("z = %d, w = %d ,tmp = %d\n", z, w, tmp);
+    int tmp;
+    int x = 1;
+    int y = 2;
+    int z = 3;
+    int w = 3;
+    SWAP(x, y, tmp);
+    printf("x = %d, y = %d, tmp = %d\n", x, y, tmp);
+    if (x y) SWAP(x, y, tmp);
+    printf("x = %d, y = %d, tmp = %d\n", x, y, tmp);
+    SWAPWHEN(x, y, tmp, SQUARE(1 + 2 + z++ + ++w) == 100);
+    printf("x = %d, y = %d\n", x, y, tmp);
+    printf("z = %d, w = %d, tmp = %d\n", z, w, tmp);
 }
 ```
 

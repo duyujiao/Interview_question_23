@@ -1,6 +1,6 @@
 # 西邮Linux兴趣小组2021纳新面试题
 
-> 感谢 [Zhilu](https://github.com/L33Z22L11) 重新录入题目原件。好人一生平安。
+感谢 [Zhilu](https://github.com/L33Z22L11) 重新录入题目原件。好人一生平安。
 
 注:
 - 本题目仅作`西邮Linux兴趣小组`2021纳新面试题的有限参考。
@@ -9,10 +9,8 @@
 - 题目难度与序号无关。
 - 所有题目均假设编译并运行`x86_64 GNU/Linux`环境。
 
-Copyright © 2021 西邮Linux兴趣小组, All Rights Reserved.  
+Copyright © 2021 西邮Linux兴趣小组, All Rights Reserved.
 本试题使用采用 [知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](http://creativecommons.org/licenses/by-nc-sa/4.0/) 进行许可。
-
-
 
 ## 1. 大小和长度竟然不是一个意思
 
@@ -22,10 +20,10 @@ Copyright © 2021 西邮Linux兴趣小组, All Rights Reserved.
 
 ```c
 int main(void) {
-  char s[] = "I love Linux\0\0\0";
-  int a = sizeof(s);
-  int b = strlen(s);
-  printf("%d %d\n", a, b);
+    char s[] = "I love Linux\0\0\0";
+    int a = sizeof(s);
+    int b = strlen(s);
+    printf("%d %d\n", a, b);
 }
 ```
 ## 2. 箱子的大小和装入物品的顺序有关
@@ -34,20 +32,20 @@ int main(void) {
 
 ```c
 struct test1 {
-  int a;
-  short b;
-  double c;
+    int a;
+    short b;
+    double c;
 };
 struct test2 {
-  short b;
-  int a;
-  double c;
+    short b;
+    int a;
+    double c;
 };
 int main(void) {
-  struct test1 t1;
-  struct test2 t2;
-  printf("sizeof (t1) : %d\n", sizeof(t1));
-  printf("sizeof(t2): %d\n", sizeof(t2));
+    struct test1 t1;
+    struct test2 t2;
+    printf("sizeof(t1): %d\n", sizeof(t1));
+    printf("sizeof(t2): %d\n", sizeof(t2));
 }
 ```
 
@@ -57,13 +55,13 @@ int main(void) {
 ```c
 /*在这里补全func函数的定义*/
 int main(void) {
-  int arr[10][13];
-  for (int i = 0; i < 10; i++) {
-    for (int j = 0; j < 13; j++) {
-      arr[i][j] = rand();
+    int arr[10][13];
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 13; j++) {
+            arr[i][j] = rand();
+        }
     }
-  }
-  func(arr);
+    func(arr);
 }
 ```
 
@@ -75,28 +73,28 @@ int main(void) {
 ```c
 int ver = 123;
 void func1(int ver) {
-  ver++;
-  printf("ver = %d\n", ver);
+    ver++;
+    printf("ver = %d\n", ver);
 }
 void func2(int *pr) {
-  *pr = 1234;
-  printf("*pr = %d\n", *pr);
-  pr = 5678;
-  printf("ver = %d\n", ver);
+    *pr = 1234;
+    printf("*pr = %d\n", *pr);
+    pr = 5678;
+    printf("ver = %d\n", ver);
 }
 int main() {
-  int a = 0;
-  int ver = 1025;
-  for (int a = 3; a < 4; a++) {
-    static int a = 5;
-    printf("a = %d\n", a);
-    a = ver;
-    func1(ver);
-    int ver = 7;
-    printf("ver = %d\n", ver);
-    func2(&ver);
-  }
-  printf("a = %d\tver = %d\n", a, ver);
+    int a = 0;
+    int ver = 1025;
+    for (int a = 3; a < 4; a++) {
+        static int a = 5;
+        printf("a = %d\n", a);
+        a = ver;
+        func1(ver);
+        int ver = 7;
+        printf("ver = %d\n", ver);
+        func2(&ver);
+    }
+    printf("a = %d\tver = %d\n", a, ver);
 }
 ```
 
@@ -113,29 +111,30 @@ int main(void) { printf("%u\n", sum(100)); }
 
 ```c
 void func(void) {
-  short a = -2;
-  unsigned int b = 1;
-  b += a;
-  int c = -1;
-  unsigned short d = c * 256;
-  c <<= 4;
-  int e = 2;
-  e = ~e | 6;
-  d = (d & 0xff) + 0x2022;
-  printf("a=0x%hx\tb=0x%x\td=0x%hx\te=0x%x\n", a, b, d, e);
-  printf("c=Ox%hhx\t\n", (signed char)c);
+    short a = -2;
+    unsigned int b = 1;
+    b += a;
+    int c = -1;
+    unsigned short d = c * 256;
+    c <<= 4;
+    int e = 2;
+    e = ~e | 6;
+    d = (d & 0xff) + 0x2022;
+    printf("a=0x%hx\tb=0x%x\td=0x%hx\te=0x%x\n", a, b, d, e);
+    printf("c=Ox%hhx\t\n", (signed char)c);
 }
 ```
+
 ## 7. 指针和数组的恩怨情仇
 
 ```c
 int main(void) {
-  int a[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-  int(*b)[3] = a;
-  ++b;
-  b[1][1] = 10;
-  int *ptr = (int *)(&a + 1);
-  printf("%d %d %d \n", a[2][1], **(a + 1), *(ptr - 1));
+    int a[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int(*b)[3] = a;
+    ++b;
+    b[1][1] = 10;
+    int *ptr = (int *)(&a + 1);
+    printf("%d %d %d \n", a[2][1], **(a + 1), *(ptr - 1));
 }
 ```
 
@@ -152,24 +151,24 @@ int a = 1;
 int const b = 2;
 const int c = 3;
 void funco(int n) {
-  n += 1;
-  n = a;
+    n += 1;
+    n = a;
 }
 void func1(int *n) {
-  *n += 1;
-  n = &a;
+    *n += 1;
+    n = &a;
 }
 void func2(const int *n) {
-  *n += 1;
-  n = &a;
+    *n += 1;
+    n = &a;
 }
 void func3(int *const n) {
-  *n += 1;
-  n = &a;
+    *n += 1;
+    n = &a;
 }
 void func4(const int *const n) {
-  *n += 1;
-  n = &a;
+    *n += 1;
+    n = &a;
 }
 ```
 
@@ -177,13 +176,12 @@ void func4(const int *const n) {
 
 请编写`convert`函数用来将作为参数的字符串中的大写字母转换为小写字母，将小写字母转换为大写字母。返回转换完成得到的新字符串。
 
-
 ```c
 char *convert(const char *s);
 int main(void) {
-  char *str = "XiyouLinux Group 2022";
-  char *temp = convert(str);
-  puts(temp);
+    char *str = "XiyouLinux Group 2022";
+    char *temp = convert(str);
+    puts(temp);
 }
 ```
 
@@ -194,22 +192,22 @@ int main(void) {
 - 你还有其他的方式实现`Swap`功能吗？
 
 ```c
-#define Swap1(a, b, t) \
-  do {                 \
-    t = a;             \
-    a = b;             \
-    b = t;             \
-  } while (0)
-#define Swap2(a, b) \
-  do {              \
-    int t = a;      \
-    a = b;          \
-    b = t;          \
-  } while (0)
+#define Swap1(a, b, t)   \
+    do {                 \
+        t = a;           \
+        a = b;           \
+        b = t;           \
+    } while (0)
+#define Swap2(a, b)      \
+    do {                 \
+        int t = a;       \
+        a = b;           \
+        b = t;           \
+    } while (0)
 void Swap3(int a, int b) {
-  int t = a;
-  a = b;
-  b = t;
+    int t = a;
+    a = b;
+    b = t;
 }
 ```
 
@@ -219,9 +217,9 @@ void Swap3(int a, int b) {
 
 ```c
 int main(int argc, char *argv[]) {
-  printf("argc = %d\n", argc);
-  for (int i = 0; i < argc; i++)
-    printf("%s\n", argv[i]);
+    printf("argc = %d\n", argc);
+    for (int i = 0; i < argc; i++)
+        printf("%s\n", argv[i]);
 }
 ```
 
@@ -231,23 +229,23 @@ int main(int argc, char *argv[]) {
 
 ```c
 int *func1(void) {
-  static int n = 0;
-  n = 1;
-  return &n;
+    static int n = 0;
+    n = 1;
+    return &n;
 }
 int *func2(void) {
-  int *p = (int *)malloc(sizeof(int));
-  *p = 3;
-  return p;
+    int *p = (int *)malloc(sizeof(int));
+    *p = 3;
+    return p;
 }
 int *func3(void) {
-  int n = 4;
-  return &n;
+    int n = 4;
+    return &n;
 }
 int main(void) {
-  *func1() = 4;
-  *func2() = 5;
-  *func3() = 6;
+    *func1() = 4;
+    *func2() = 5;
+    *func3() = 6;
 }
 ```
 
@@ -255,10 +253,10 @@ int main(void) {
 
 ```c
 int main(void) {
-  int data[] = {0x636c6557, 0x20656d6f, 0x78206f74,
-                0x756f7969, 0x6e694c20, 0x67207875,
-                0x70756f72, 0x32303220, 0x00000a31};
-  puts((const char*)data);
+    int data[] = {0x636c6557, 0x20656d6f, 0x78206f74,
+                  0x756f7969, 0x6e694c20, 0x67207875,
+                  0x70756f72, 0x32303220, 0x00000a31};
+    puts((const char*)data);
 }
 ```
 
@@ -274,8 +272,7 @@ int main(void) {
 
 ## 17. (选做) `GNU/Linux`与文件
 
-- 你知道如何在 `GNU/Linux`下如何使用命令行创建文件与文
-件夹吗？
+- 你知道如何在 `GNU/Linux`下如何使用命令行创建文件与文件夹吗？
 - 你知道`GNU/Linux`下的命令ls 的每一列的含义吗？
 - 你知道`GNU/Linux`下文件的访问时间、修改时间、创建时间如何查看吗？并简单说说他们的区别。
 
